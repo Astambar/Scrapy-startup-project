@@ -5,7 +5,7 @@ class QuoteSpider(scrapy.Spider):
     name = 'quotes'
     allowed_domains = ['quotes.toscrape.com']
     start_urls = ['http://quotes.toscrape.com/']
-
+    meta_html = '//html/@lang'
     break_requests = False
     def start_requests(self):
         i = 0
@@ -25,3 +25,6 @@ class QuoteSpider(scrapy.Spider):
                                 tags=quote_bloc.css('a.tag::text').getall())
             else:
                 self.break_requests = True
+                
+                
+                
